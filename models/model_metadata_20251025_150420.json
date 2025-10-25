@@ -1,0 +1,37 @@
+{
+  "timestamp": "20251025_150420",
+  "best_params_logreg": {
+    "clf__penalty": "l2",
+    "clf__C": 100.0
+  },
+  "best_params_histgb": {
+    "clf__min_samples_leaf": 100,
+    "clf__max_leaf_nodes": 31,
+    "clf__max_iter": 500,
+    "clf__max_depth": 6,
+    "clf__learning_rate": 0.05011872336272725,
+    "clf__l2_regularization": 0.001
+  },
+  "features_num": [
+    "PREV1_TOTAL",
+    "PREV3_TOTAL",
+    "P_LIGHTNING_3M",
+    "P_LARGE_3M"
+  ],
+  "features_cat": [
+    "MONTH"
+  ],
+  "train_years": [
+    1992,
+    2010
+  ],
+  "val_years": [
+    2011,
+    2012
+  ],
+  "test_years": [
+    2013,
+    2015
+  ],
+  "random_state": 42
+}
