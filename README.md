@@ -3,10 +3,7 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
 https://colab.research.google.com/github/ROHITRITESH/wildfire-early-warning-prediction/blob/main/notebooks/wildfire_training_colab.ipynb)
 
-**Summary:** This repository delivers a practical, reproducible pipeline for **early warning of US wildfires at the county × month level**. Using the publicly available US Wildfires dataset (1992–2015), I aggregate incident records into a complete county–month panel, engineer **lagged signals** (last 1 month and last 3 months of activity, lightning share, and large-fire share), and learn a probability of **any wildfire next month**. Two complementary models, a calibrated **Logistic Regression** and a tuned, calibrated **Histogram Gradient Boosting** model, are trained with **time-aware validation** to avoid leakage. Probabilities are **calibrated via isotonic regression**, so a predicted 0.70 corresponds closely to a 70% observed frequency which is useful for operations and communication.
-
-**Headline performance on held-out 2013–2015:** PR-AUC ≈ **0.78**, Precision@Top-10% ≈ **0.92**, with good calibration. The repository includes a one-click Colab notebook for full training and a minimal **`scripts/score.py`** so anyone can score **future months** provided the same input features are supplied. This design keeps deployment simple wherein agencies can compute rolling features from their latest logs and obtain risk rankings immediately. Limitations are noted (monthly granularity, need for minimal history, potential reporting bias), and the approach is extensible to weather/vegetation covariates.
-
+**Summary:** This repository delivers a practical, reproducible pipeline for **early warning of US wildfires at the county × month level**. Using the publicly available US Wildfires dataset (1992–2015), I aggregate incident records into a complete county–month panel, engineer **lagged signals** (last 1 month and last 3 months of activity, lightning share, and large-fire share), and learn a probability of **any wildfire next month**. Two complementary models, a calibrated **Logistic Regression** and a tuned, calibrated **Histogram Gradient Boosting** model, are trained with **time-aware validation** to avoid leakage. Probabilities are **calibrated via isotonic regression**, so a predicted 0.70 corresponds closely to a 70% observed frequency which is useful for operations and communication. The repository includes a Colab notebook for full training and a minimal **`scripts/score.py`** so anyone can score **future months** provided the same input features are supplied. This design keeps deployment simple wherein agencies can compute rolling features from their latest logs and obtain risk rankings immediately. Limitations are noted (monthly granularity, need for minimal history, potential reporting bias), and the approach is extensible to weather/vegetation covariates.
 
 **Key results (held-out 2013–2015):**
 - PR-AUC ≈ **0.78**
@@ -60,6 +57,21 @@ The `.joblib` file is committed under `models/`.
    ```
 5. What you get:
    A ranked CSV at outputs/scored.csv with a new RISK column (higher = higher wildfire risk).
+
+
+### D) Results
+
+<table>
+  <tr>
+    <td><img src="outputs/pr_curve_final.png" width="360"></td>
+    <td><img src="outputs/precision_at_10_final.png" width="360"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="outputs/calibration_final.png" width="740">
+    </td>
+  </tr>
+</table>
 
 ## Model Card & Limitations
 
