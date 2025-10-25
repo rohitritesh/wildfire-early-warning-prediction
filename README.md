@@ -1,5 +1,4 @@
-# wildfire-early-warning-prediction
-# Wildfire Early Warning (County × Month)
+# US Wildfire Early Warning Prediction
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
 https://colab.research.google.com/github/ROHITRITESH/wildfire-early-warning-prediction/blob/main/notebooks/wildfire_training_colab.ipynb)
@@ -13,3 +12,18 @@ Trained on FPA-FOD (1992–2015) using time-aware validation and calibrated prob
 - Calibrated risks (isotonic)
 
 ## Repo layout
+wildfire-early-warning/
+├─ notebooks/
+│ └─ wildfire_training_colab.ipynb
+├─ scripts/
+│ └─ score.py
+├─ models/
+│ └─ model_histgb_final.joblib
+├─ outputs/
+│ ├─ pr_curve_final.png
+│ ├─ precision_at_10_final.png
+│ └─ calibration_final.png
+├─ data/
+├─ requirements.txt
+├─ README.md
+└─ LICENSE
