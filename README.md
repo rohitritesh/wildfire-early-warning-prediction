@@ -27,3 +27,16 @@ wildfire-early-warning/
 ├─ requirements.txt
 ├─ README.md
 └─ LICENSE
+
+## Quickstart (Score Without Training)
+
+1. Download the trained model (see **Model Download** below).
+2. Prepare a small features CSV with these columns (one row per county×month):
+   REGION_ID,YEAR,MONTH,PREV1_TOTAL,PREV3_TOTAL,P_LIGHTNING_3M,P_LARGE_3M
+   CA | Los Angeles,2015,8,12,34,0.41,0.18
+   CA | Orange,2015,8,5,11,0.20,0.09
+3. 3. Install deps and score:
+```bash
+pip install -r requirements.txt
+python scripts/score.py --model models/model_histgb_final.joblib --features data/sample_features.csv --out outputs/scored.csv
+
